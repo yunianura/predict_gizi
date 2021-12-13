@@ -9,4 +9,3 @@ numpydoc
 pandas 
 scikit-learn 
 Werkzeug==1.0.1
-xgboost
