@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment Tutorial 1</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body style="background: rgb(252, 250, 250);">
+  <div class="login">
+    <div class="w-25 mx-auto text-center mt-2">
+      <h1>Prediksi Status Gizi Balita di NTB</h1>
+    </div>
+    <form action="{{ url_for('predict')}}" method="post">
+      <div class="container">
+        <div class="card bg-dark text-light">
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="KABUPATEN" class="form-label">KABUPATEN</label>
+                <select id="KABUPATEN" class="form-select" name="KABUPATEN" , placeholder="KABUPATEN" ,
+                  required="required">
+                  <option value="1">Lombok Barat</option>
+                  <option value="2">Lombok Tengah</option>
+                  <option value="3">Lombok Timur</option>
+                  <option value="4">Sumbawa</option>
+                  <option value="5">Dompu</option>
+                  <option value="6">Bima</option>
+                  <option value="7">Sumbawa Barat</option>
+                  <option value="8">Lombok Utara</option>
+                  <option value="9">Kota Mataram</option>
+                  <option value="10">Kota Bima</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="PUSKESMAS" class="form-label">JUMLAH PUSKESMAS: </label>
+                <input type="text" class="form-control" name="PUSKESMAS" placeholder="PUSKESMAS" required="required">
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="JUMLAH BALITA\n0-59 BULAN YANG DITIMBANG" class="form-label">JUMLAH BALITA 0-59 BULAN YANG
+                  DITIMBANG:
+                </label>
+                <input type="text" class="form-control" name="JUMLAH BALITA\n0-59 BULAN YANG DITIMBANG"
+                  placeholder="JUMLAH BALITA 0-59 BULAN YANG DITIMBANG" required="required">
+              </div>
+              <div class="col-md-6">
+                <label for="BALITA GIZI KURANG (BB/U)" class="form-label">JUMLAH BALITA GIZI KURANG (BB/U): </label>
+                <input type="text" class="form-control" name="BALITA GIZI KURANG (BB/U)"
+                  placeholder="JUMLAH BALITA GIZI KURANG (BB/U)" required="required">
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="JUMLAH BALITA\n0-59 BULAN YANG DIUKUR TINGGI BADAN" class="form-label">JUMLAH BALITA 0-59
+                  BULAN YANG
+                  DIUKUR TINGGI BADAN:
+                </label>
+                <input type="text" class="form-control" name="JUMLAH BALITA\n0-59 BULAN YANG DIUKUR TINGGI BADAN"
+                  placeholder="JUMLAH BALITA 0-59 BULAN YANG DIUKUR TINGGI BADAN" required="required">
+              </div>
+              <div class="col-md-6">
+                <label for="BALITA PENDEK (TB/U)" class="form-label">JUMLAH BALITA PENDEK (TB/U): </label>
+                <input type="text" class="form-control" name="BALITA PENDEK (TB/U)"
+                  placeholder="JUMLAH BALITA PENDEK (TB/U)" required="required">
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="JUMLAH BALITA\n0-59 BULAN YANG DIUKUR" class="form-label">JUMLAH BALITA 0-59 BULAN YANG
+                  DIUKUR:
+                </label>
+                <input type="text" class="form-control" name="JUMLAH BALITA\n0-59 BULAN YANG DIUKUR"
+                  placeholder="JUMLAH BALITA 0-59 BULAN YANG DIUKUR" required="required">
+              </div>
+              <div class="col-md-6">
+                <label for="BALITA KURUS (BB/TB)" class="form-label">JUMLAH BALITA KURUS (BB/TB): </label>
+                <input type="text" class="form-control" name="BALITA KURUS (BB/TB)"
+                  placeholder="JUMLAH BALITA KURUS (BB/TB)" required="required">
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="TAHUN" class="form-label">TAHUN: </label>
+                <input type="text" class="form-control" name="TAHUN" placeholder="TAHUN" required="required">
+              </div>
+              <div class="col-md-6">
+                <label for="JUMLAH KASUS" class="form-label">JUMLAH KASUS: </label>
+                <input type="text" class="form-control" name="JUMLAH KASUS" placeholder="JUMLAH KASUS"
+                  required="required">
+              </div>
+            </div>
+            <div class="text-left mt-4">
+              <h13>NB:</h13>
+              <h13>1 = Sosialisasi</h13>
+              <h13>2 = Pemantauan</h13>
+            </div>
+            <div class="w-25 mx-auto text-center">
+              <button type="submit" class="btn btn-primary">AKSI
+                YANG HARUS DILAKUKAN</button>
+            </div>
+          </div>
+        </div>
+        <h2>
+          {{ prediction_text }}
+        </h2>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
